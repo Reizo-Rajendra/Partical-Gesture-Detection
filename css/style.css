@@ -1,0 +1,224 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000000;
+  color: #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "JetBrains Mono", monospace;
+}
+
+.main-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+}
+
+/* ================= LEFT: CAMERA PANEL ================= */
+
+.camera-panel {
+  width: 420px;
+  max-width: 45vw;
+  min-width: 300px;
+  height: 100vh;
+  background: #09090b;
+  border-right: 1px solid #1f1f23;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.camera-header {
+  height: 38px;
+  background: #121215;
+  border-bottom: 1px solid #1f1f23;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #9ca3af;
+}
+
+.dot-live {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+}
+
+.camera-title {
+  color: #d1d5db;
+  letter-spacing: 0.3px;
+}
+
+.fps-tag {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: #10b981;
+  font-family: monospace;
+  font-weight: 700;
+}
+
+.camera-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #000000;
+  overflow: hidden;
+  border-bottom: 1px solid #1f1f23;
+}
+
+#webcam-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1);
+}
+
+#webcam-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.camera-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #00ff66;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border-left: 3px solid #00ff66;
+  pointer-events: none;
+}
+
+.cam-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #050508;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cam-fallback button {
+  background: #10b981;
+  color: #000;
+  border: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cam-fallback button:hover {
+  opacity: 0.9;
+}
+
+.camera-panel.active .cam-fallback {
+  display: none;
+}
+
+/* Gesture Hints List under camera */
+.gesture-hints {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.hint-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #121216;
+  border: 1px solid #1c1c22;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.hint-item:hover {
+  background: #181820;
+  border-color: #38bdf8;
+  color: #fff;
+}
+
+.hint-item.active {
+  background: #14222d;
+  border-color: #0ea5e9;
+  color: #38bdf8;
+}
+
+.hint-item strong {
+  color: #f3f4f6;
+  font-weight: 600;
+}
+
+/* ================= RIGHT: 3D PARTICLES ================= */
+
+.particle-panel {
+  flex: 1;
+  height: 100vh;
+  position: relative;
+  background: #000000;
+  overflow: hidden;
+}
+
+.status-overlay {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+  }
+  .camera-panel {
+    width: 100vw;
+    max-width: 100vw;
+    height: 45vh;
+    border-right: none;
+    border-bottom: 1px solid #1f1f23;
+  }
+  .particle-panel {
+    height: 55vh;
+  }
+  .gesture-hints {
+    display: none;
+  }
+}

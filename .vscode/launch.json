@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch AI Particles in Chrome",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start AI Particle Web App"
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch AI Particles in Edge",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Start AI Particle Web App"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hand Gesture 3D Particles</title>
+
+  <!-- Clean System Monospace Typography -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- MediaPipe Hands CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="main-container">
+    <!-- LEFT: Camera Sensor View -->
+    <div class="camera-panel">
+      <div class="camera-header">
+        <span class="dot-live"></span>
+        <span class="camera-title">Hand Sensor Monitor</span>
+        <span class="fps-tag" id="fps-tag">60 FPS</span>
+      </div>
+      <div class="camera-screen">
+        <video id="webcam-video" playsinline muted autoplay></video>
+        <canvas id="webcam-overlay"></canvas>
+        <div class="camera-info" id="camera-info">1 FINGER: SATURN</div>
+        <div class="cam-fallback" id="cam-fallback">
+          <button id="btn-start-camera">Nyalakan Kamera</button>
+        </div>
+      </div>
+      <!-- Subtle quick hints under camera -->
+      <div class="gesture-hints">
+        <div class="hint-item" data-gesture="saturn"><span>☝️ 1 Jari</span><strong>Saturnus</strong></div>
+        <div class="hint-item" data-gesture="text"><span>✌️ 2 Jari</span><strong>I Love You</strong></div>
+        <div class="hint-item" data-gesture="heart"><span>✊ Kepalan</span><strong>Heart</strong></div>
+        <div class="hint-item" data-gesture="galaxy"><span>🖐️ 5 Jari</span><strong>Galaksi</strong></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Pure Black 3D Particle Space -->
+    <div class="particle-panel" id="canvas-container">
+      <div class="status-overlay" id="status-overlay">SATURN</div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
